@@ -1,0 +1,27 @@
+﻿<h1>Game Results</h1>
+<p>Pick the winning teams for the week</p>
+<div class="form-group">
+    <label for="weekSelectiong">Week</label>
+    <select class="form-control" id="weekSelectiong" (change)="SelectWeek($event)" [(ngModel)]="selectedWeek">
+        <option *ngFor="let week of weeks" [value]="week">{{week}}</option>
+    </select>
+</div>
+<br />
+<button type="button" class="btn" (click)="UpdateGames()">Update Results</button>
+<button type="button" class="btn" [disabled]="locked" (click)="LockWeek()">Lock Week</button>
+<table class='table table-striped' *ngIf="games">
+    <thead>
+        <tr>
+            <th>Away</th>
+            <th>@</th>
+            <th>Home</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of games">
+            <td (click)="game.outcome='Away'" [ngClass]="{'success':game.outcome=='Away'}" style="cursor:pointer"><img style="width:10%; padding-right: 5px;" [src]="game.awayTeam.teamLogoUrl" /><span *ngIf="game.awayTeam.apRank">({{game.awayTeam.apRank}}) </span>{{game.awayTeam.school}}</td>
+            <td style="vertical-align: middle;">@</td>
+            <td (click)="game.outcome='Home'" [ngClass]="{'success':game.outcome=='Home'}" style="cursor:pointer"><img style="width:10%; padding-right: 5px;" [src]="game.homeTeam.teamLogoUrl" /><span *ngIf="game.homeTeam.apRank">({{game.homeTeam.apRank}}) </span>{{game.homeTeam.school}}</td>
+        </tr>
+    </tbody>
+</table>

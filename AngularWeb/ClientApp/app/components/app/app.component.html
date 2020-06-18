@@ -1,0 +1,11 @@
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-sm-3' *ngIf="auth.isLoggedIn()">
+            <nav-menu></nav-menu>
+        </div>
+        <div class='body-content' [ngClass]="{'col-sm-9':auth.isLoggedIn(), 'col-sm-12':!auth.isLoggedIn()}" >
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<ng-progress></ng-progress>

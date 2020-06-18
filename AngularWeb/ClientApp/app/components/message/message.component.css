@@ -1,0 +1,164 @@
+﻿#wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+#list {
+    width: 25%;
+    height: 700px;
+    border-left: solid;
+    border-right: solid;
+    border-bottom: solid;
+    float: left;
+    box-sizing: border-box;
+    border-color: lightgray;
+}
+
+#chat {
+    width: 45%;
+    height: 700px;
+    /*border-style: solid;*/
+    float: left;
+    box-sizing: border-box;
+    border-left: solid;
+    border-color: lightgray;
+}
+
+.user {
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    height: auto;
+    overflow: hidden;
+}
+
+.name_box {
+    height: 80px;
+    background-color: #303641;
+   
+}
+
+.bar {
+    height: 80px;
+    background-color: #303641;
+}
+
+.name {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 80px;
+   
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 50px;
+    margin: 5px;
+    height: 50px;
+}
+
+.user-image1 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.img-container {
+    float: left;
+}
+
+
+
+.message_write {
+    background: #303641 none repeat scroll 0 0;
+    float: left;
+    padding: 15px;
+    width: 100%;
+}
+
+.message_write textarea.form-control {
+    height: 70px;
+    padding: 10px;
+}
+
+.chat_bottom {
+    float: left;
+    margin-top: 13px;
+    width: 100%;
+}
+
+.chat-area {
+    float: left;
+    height: 473px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.user-body {
+    padding: 12px;
+}
+
+.chat-body1 {
+    margin-left: 70px;
+    background: #2b303a none repeat scroll 0 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.chat-body2 {
+    margin-right: 70px;
+    background: #2c7e87 none repeat scroll 0 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chat-user, .chat_time {
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.chat-area-li {
+    padding: 14px 14px 0;
+}
+
+.chat-body1 p {
+    padding: 10px;
+    color: #aaabae;
+}
+
+.chat-body2 p {
+    padding: 10px;
+    color: #aaabae;
+}
+
+.chat_area {
+    float: left;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.chat_area li {
+    padding: 14px 14px 0;
+}
+
+.chat-img1 {
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+
+.chat-img2 {
+    height: 40px;
+    width: 40px;
+    float: right;
+    margin-right: 10px;
+}
+
+.chat_area li:last-child {
+    padding-bottom: 10px;
+}

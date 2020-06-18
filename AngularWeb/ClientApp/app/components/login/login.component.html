@@ -1,0 +1,21 @@
+﻿<div class="content">
+    <div class="container">
+        <img src="../../../dist/logo.jpg" class="img_back" />
+        <br />
+        <label for="uname"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="uname" required [(ngModel)]="email">
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="password">
+
+        <button type="button" (click)="login()">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <span class="reg"><a [routerLink]=" ['/registration'] " routerLinkActive="active">Registration Here</a></span>
+        <span class="psw">Forgot <a  [routerLink]=" ['/forgotPassword']" routerLinkActive="active" >Password?</a></span>
+    </div>
+</div>

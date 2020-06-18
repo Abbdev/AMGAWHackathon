@@ -1,0 +1,55 @@
+﻿<div class="card" *ngIf="user">
+    <img *ngIf="user.image" [src]="user.image" alt="John" class="profile">
+    <h1 style="padding-bottom: 10px;">{{user.name}}</h1>   
+</div>
+<div class="scoreparent" style=" font-family: 'Times New Roman'; font-weight: bold">
+    <div class="scorecard">
+        <p>OVERALL CORRECT PICKS</p>
+        <p>{{stats.correct}}</p>
+    </div>
+    <div class="scorecard">
+        <p>OVERALL PICKS %</p>
+        <p>{{stats.percentage}}%</p>
+    </div>
+    <div class="scorecard">
+        <p>HIGHEST RANK</p>
+        <p>{{stats.topRank}}</p>
+    </div>
+    <div class="scorecard">
+        <p>HIGHEST WEEK POINTS</p>
+        <p>{{stats.topPoints}}</p>
+    </div>
+</div>
+<table class='table table-striped' style="max-width: 80%; margin: auto; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+    <thead>
+        <tr style="background-color: #eaecf0;">
+            <th>Week</th>
+            <th>Rank</th>
+            <th>Correct</th>
+            <th>Incorrect</th>
+            <th>PCT</th>
+            <th>BestBet</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of weeks">
+            <td>{{row.week}}</td>
+            <td>{{row.rank}}</td>
+            <td>{{row.correct}}</td>
+            <td>{{row.incorrect}}</td>
+            <td>{{row.percent}}%</td>
+            <td>{{row.bestBet}}</td>
+            <td>{{row.points}}</td>
+        </tr>
+        <tr style="font-weight: bold; background-color: #eaecf0;">
+            <td>Week</td>
+            <td>Rank</td>
+            <td>{{stats.correct}}</td>
+            <td>{{stats.incorrect}}</td>
+            <td>{{stats.percentage}}%</td>
+            <td>BestBet</td>
+            <td>{{stats.points}}</td>
+        </tr>
+    </tbody>
+ </table>

@@ -1,0 +1,66 @@
+<div class='main-nav'>
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]="['/leaderboard']">Fantasy Dyn</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/leaderboard']">
+                        <span class='glyphicon glyphicon-th-list'></span> Leaderboard
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/weeklyResults']">
+                        <span class='glyphicon glyphicon-th-list'></span> Weekly Results
+                    </a>
+                </li>
+                <li *ngIf="auth.isUserAdmin()" [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/gameselector']">
+                        <span class='glyphicon glyphicon-cog'></span> Game Setup
+                    </a>
+                </li>
+                <li *ngIf="auth.isUserAdmin()" [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/gameresults']">
+                        <span class='glyphicon glyphicon-cog'></span> Game Results
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/userPicks']">
+                        <span class='glyphicon glyphicon-user'></span> User Picks
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/profile']">
+                        <span class='glyphicon glyphicon-user'></span> Profile
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/message']">
+                        <span class='glyphicon glyphicon-list-alt'></span> Message
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/rules']">
+                        <span class='glyphicon glyphicon-education'></span> Rules
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/login']">
+                        <span class='glyphicon glyphicon-remove-sign'></span> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--<div>
+            <img style="width: 100%" src="https://s3-us-west-2.amazonaws.com/static.fantasydata.com/logos/ncaa/97.png" />
+        </div>-->
+    </div>
+</div>

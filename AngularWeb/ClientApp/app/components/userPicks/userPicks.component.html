@@ -1,0 +1,42 @@
+﻿<h1>Weekly Picks</h1>
+<p>Make your picks for the week</p>
+
+<div class="form-group">
+    <label for="weekSelectiong">Week</label>
+    <select class="form-control" id="weekSelectiong" (change)="SelectWeek($event)" [(ngModel)]="selectedWeek">
+        <option *ngFor="let week of weeks" [value]="week">{{week}}</option>
+    </select>
+</div>
+
+<button [disabled]="locked" style="margin-bottom: 10px; margin-top: 10px;"type="button" class="btn" (click)="SaveGames()">Save</button>
+<P style="font-weight: bold;">Best Bet</P>
+<select [disabled]="locked" class="form-control" style="margin-bottom: 20px;" [(ngModel)]="pick.bestBet" (change)="SelectBestBet($event)">
+    <!--<option></option>-->
+    <option *ngFor="let game of games" [hidden]="game.selected != game.awayId" [value]="game.awayId">{{game.away}}</option>
+    <option *ngFor="let game of games" [hidden]="game.selected != game.homeId" [value]="game.homeId">{{game.home}}</option>
+</select>
+<table class='table table-striped' *ngIf="games">
+    <thead>
+        <tr>
+            <th>Spread</th>
+            <th>Away</th>
+            <th></th>
+            <th>@</th>
+            <th>Home</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of games; let i = index">
+            <td style="vertical-align: middle;" align="center">{{game.spread}}</td>
+            <td [ngClass]="{'success':game.selected == game.awayId}"><img style="width:10%; padding-right: 5px;" [src]="game.awayTeam.teamLogoUrl" /> {{game.away}}</td>
+            <td style="vertical-align: middle;"><input [disabled]="locked" [name]="i" type="radio" [checked]="game.selected == game.awayId" (click)="game.selected = game.awayId" /></td>
+            <td style="vertical-align: middle;">@</td>
+            <td [ngClass]="{'success':game.selected == game.homeId}"><img style="width:10%; padding-right: 5px;" [src]="game.homeTeam.teamLogoUrl" /> {{game.home}}</td>
+            <td style="vertical-align: middle;"><input [disabled]="locked" [name]="i" type="radio" [checked]="game.selected == game.homeId" (click)="game.selected = game.homeId" /></td>
+        </tr>
+    </tbody>
+</table>
+
+
+

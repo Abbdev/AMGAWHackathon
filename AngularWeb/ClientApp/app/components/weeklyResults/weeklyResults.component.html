@@ -1,0 +1,49 @@
+﻿<style>
+    .bestBet {
+        border-style: solid;
+        border-width: thin;
+    }
+</style>
+<h1>Weekly Results Board</h1>
+<p>Current Picks</p>
+<div class="form-group">
+    <label for="weekSelectiong">Week</label>
+    <select class="form-control" id="weekSelectiong" (change)="SelectWeek($event)" [(ngModel)]="selectedWeek">
+        <option *ngFor="let week of weeks" [value]="week">{{week}}</option>
+    </select>
+</div>
+<table style="margin-bottom:5px;" class='table table-striped' *ngIf="resultResponse">
+    <thead>
+        <tr>
+            <th></th>
+            <th *ngFor="let game of resultResponse.games">
+                <div><img style="width:50%; padding-right: 5px; margin:auto; display:block" [src]="game.awayTeam.teamLogoUrl" /></div>
+                <div style="text-align:center">@</div>
+                <div><img style="width:50%; padding-right: 5px; margin:auto; display:block" [src]="game.homeTeam.teamLogoUrl" /></div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="vertical-align: middle;">Spread</td>
+            <td align="center" *ngFor="let game of resultResponse.games">
+                {{game.spread}}
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: middle;">Game Time</td>
+            <td align="center" *ngFor="let game of resultResponse.games">
+                <div>{{game.day | date: 'MMM dd'}}</div>
+                <div>{{game.dateTime | date: 'hh:mm'}}</div>
+            </td>
+        </tr>
+        <tr *ngFor="let row of resultResponse.rows" [ngStyle]="{'font-weight':row.user.email == userEmail ? 'bold' : 'normal' }">
+            <td style="vertical-align: middle;">{{ row.user.name }}</td>
+            <td *ngFor="let team of row.teams" style="vertical-align: middle;" [ngClass]="{ 'success':team.outcome == 'Win', 'danger':team.outcome == 'Lose' }" align="center">
+                <div [ngClass]="{ 'bestBet':team.teamID == row.bestBetId }">
+                    <img style="width:70%; padding-right: 5px;" [src]="team.teamLogoUrl" />
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

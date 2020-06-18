@@ -1,0 +1,34 @@
+﻿<h1>Leader Board</h1>
+<p>Current Standings</p>
+<div class="form-group">
+    <label for="weekSelectiong">Week</label>
+    <select class="form-control" id="weekSelectiong" (change)="SelectWeek($event)" [(ngModel)]="selectedWeek">
+        <option *ngFor="let week of weeks" [value]="week">{{week}}</option>
+    </select>
+</div>
+<table class='table table-striped' *ngIf="leaderboard">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Previous</th>
+            <th></th>
+            <th>Correct</th>
+            <th>Incorrect</th>
+            <th>PCT</th>
+            <th>Previous Week</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of leaderboard" [ngStyle]="{'font-weight':row.email == userEmail ? 'bold' : 'normal' }">
+            <td>{{ row.rank }}</td>
+            <td>{{ row.previous }}</td>
+            <td><img style="width:60px;" *ngIf="row.image" [src]="row.image" /> {{ row.name }}</td>
+            <td>{{ row.correct }}</td>
+            <td>{{ row.incorrect }}</td>
+            <td>{{ row.percent | number:'1.2' }}</td>
+            <td>{{ row.lastWeek }}</td>
+            <td>{{ row.points }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿<h1>Game Admin</h1>
+<p>Pick the games for the week</p>
+<div class="form-group">
+    <label for="weekSelectiong">Week</label>
+    <select class="form-control" id="weekSelectiong" (change)="SelectWeek($event)" [(ngModel)]="selectedWeek">
+        <option *ngFor="let week of weeks" [value]="week">{{week}}</option>
+    </select>
+</div>
+<br />
+<button type="button" class="btn" (click)="SaveMatchups()">Save</button>
+<button type="button" class="btn" (click)="UpdateSchedule()">Update Schedule</button>
+<table class='table table-striped' *ngIf="matchups">
+    <thead>
+        <tr>
+            <th>Away</th>
+            <th>@</th>
+            <th>Home</th>
+            <th>Spread</th>
+            <th>Multiplier</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [ngClass]="{'success':matchup.selected}" *ngFor="let matchup of matchups">
+            <td><img style="width:10%; padding-right: 5px;" [src]="matchup.awayTeam.teamLogoUrl" /><span *ngIf="matchup.awayTeam.apRank">({{matchup.awayTeam.apRank}}) </span>{{matchup.awayTeam.school}}</td>
+            <td style="vertical-align: middle;">@</td>
+            <td><img style="width:10%; padding-right: 5px;" [src]="matchup.homeTeam.teamLogoUrl" /><span *ngIf="matchup.homeTeam.apRank">({{matchup.homeTeam.apRank}}) </span>{{matchup.homeTeam.school}}</td>
+            <td style="vertical-align: middle;" align="center">
+                {{matchup.pointSpread}}
+            </td>
+            <td style="vertical-align: middle;"><input type="number" class="form-control" id="multiplier" [(ngModel)]="matchup.multiplier" /></td>
+            <td style="vertical-align: middle;"><button type="button" class="btn" (click)="matchup.selected = !matchup.selected">Select</button></td>
+        </tr>
+    </tbody>
+</table>

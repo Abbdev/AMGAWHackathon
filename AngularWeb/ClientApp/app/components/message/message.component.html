@@ -1,0 +1,50 @@
+﻿<div id="wrapper">
+    <div id="chat">
+        <div class="name_box">
+            <p class="name">{{user.name}}</p>
+        </div>
+        <div class="chat-area">
+            <ul class="list-unstyled" *ngIf="messages.length > 0">
+                <li class="chat-area-li" *ngFor="let message of messages">
+                    <div class="chat-img1"  [ngClass]="{ 
+                       'chat-img1': message.fromUser.email == userEmail, 
+                       'chat-img2': message.fromUser.email != userEmail }">
+                        <img [src]="message.fromUser.photo" alt="User Avatar" class="user-image1" />
+                    </div>
+                    <div class="chat-body1" [ngClass]="{ 
+                       'chat-body1': message.fromUser.email == userEmail, 
+                       'chat-body2': message.fromUser.email != userEmail }">
+                        <span class="chat-user" >{{message.fromUser.name}}</span>
+                        <p>{{message.message}}</p>
+                        <div class="chat_time">{{message.date | date:'hh:mm a'}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="message_write">
+            <textarea class="form-control" placeholder="type a message" [(ngModel)]="messageData.Message"></textarea>
+            <div class="clearfix"></div>
+            <div class="chat_bottom">
+                <button type="button" class="pull-right btn btn-success" (click)="fromUserData.photo = user.image; fromUserData.name = user.name;
+                        sendMessage(messageData.Message)" >Send</button>
+            </div>
+        </div>
+    </div>
+    <div id="list">
+        <div class="bar">
+            <div>
+                <p class="name">Members</p>
+            </div>
+        </div>
+        <div *ngFor="let muser of allUsers">
+            <div class="user"  *ngIf="muser.email != userEmail">
+                <div class="img-container">
+                    <img [src]="muser.image"class="user-image"/>
+                </div>
+                <div class="user-body">
+                    <strong>{{muser.name}}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
